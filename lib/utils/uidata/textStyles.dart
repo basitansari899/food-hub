@@ -13,11 +13,17 @@ class UIDataTextStyles {
       fontFamily: 'Poppins',
       letterSpacing: 0.0);
 
-  static const logintitle = TextStyle(
-    fontSize: 18,
-    color: Color(0xff006EB8),
+  static const forgotPassword = TextStyle(
+    fontSize: 16,
+    color: Color(0xff000000),
     fontFamily: 'Poppins-SemiBold',
     fontWeight: FontWeight.w500,
+  );
+   static const logintitlt2 = TextStyle(
+    fontSize: 18,
+    color: Color(0xff000000),
+    fontFamily: 'Poppins-SemiBold',
+    fontWeight: FontWeight.w700,
   );
   static const kSignInHeading = TextStyle(
     color: Colors.black,

@@ -7,7 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 part 'uidata/textStyles.dart';
 part 'uidata/image.dart';
-
+part 'uidata/spacingwidth.dart';
+part 'uidata/spacingheight.dart';
+part 'uidata/color.dart';
 class UIData {
   //strings
   static const String appName ="Food Hub";
