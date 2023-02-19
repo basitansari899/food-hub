@@ -1,19 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:food_hub/utils/ui_data.dart';
+import 'package:get/get.dart';
+import 'utils/routes/app_routes.dart';
+
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+   const MyApp({Key ?key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return GetMaterialApp(
+      title: UIData.appName,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+          primaryColor: Colors.black,
+          // fontFamily: UIDataFonts.quickFont,
+          primarySwatch: Colors.blue,
       ),
-      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      debugShowCheckedModeBanner: false,
+      defaultTransition: Get.defaultTransition,
+      showPerformanceOverlay: false,
+      localizationsDelegates: [
+        // const TranslationsDelegate(),
+      ],
+      enableLog: true,
+      // logWriterCallback: Logger.write,
+      // supportedLocales: [const Locale("en", "US")],
+      initialRoute: AppPages.INITIAL,
+      getPages: AppPages.routes,
     );
   }
 }
