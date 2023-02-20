@@ -16,17 +16,12 @@ class HomeController extends GetxController {
 
 @override
   void onInit() {
-    // setfoodList();
     getFoodList();
     getCategoryList();
     getCusineList();
     super.onInit();
   }
 
-
-
-     
-     
   Future getFoodList() async {
     final productList = firestore.collection("food_list");
     try {
@@ -40,7 +35,7 @@ class HomeController extends GetxController {
       filteredFoodList = foodList;
       update();
     } catch (e) {
-      print(e.toString());
+      debugPrint(e.toString());
       return null;
     }
   }
@@ -56,7 +51,7 @@ class HomeController extends GetxController {
         }
       });
     } catch (e) {
-      print(e.toString());
+      debugPrint(e.toString());
       return null;
     }
   }
@@ -72,7 +67,7 @@ class HomeController extends GetxController {
         }
       });
     } catch (e) {
-      print(e.toString());
+      debugPrint(e.toString());
       return null;
     }
   }
