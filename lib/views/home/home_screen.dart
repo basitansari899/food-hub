@@ -34,6 +34,9 @@ class HomeScreen extends StatelessWidget {
                           hintText: UIData.searchHere,
                           fillcolor: UIDataColors.white,
                           controller: _.searchController,
+                          onChanged: (value){
+                            _.filter();
+                          },
                         ),
                       ),
                       Expanded(
@@ -63,7 +66,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   SpacingHeight.heightlistspacing10,
                   SizedBox(
-                    height: Get.height / 1.3,
+                    height: Get.height / 1.25,
                     child: FoodList(filteredFoodList: _.filteredFoodList),
                   ),
                 ],
