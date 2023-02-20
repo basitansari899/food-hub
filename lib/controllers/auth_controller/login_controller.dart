@@ -91,7 +91,7 @@ class LoginController extends GetxController {
 
   void loginfunction() async {
     if (form.currentState!.validate()) {
-      Get.offAllNamed(Routes.homeRoutes);
+      Get.toNamed(Routes.homeRoutes);
       isLoading = true.obs;
       update();
       try {
