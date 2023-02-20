@@ -45,7 +45,7 @@ class LoginController extends GetxController {
         print(e);
         CommonSnackbar.getSnackbar(
             "Error",
-            "Server Error or Please Check your internet connection",
+            "Error in Login",
             UIDataColors.red);
       }
     }
