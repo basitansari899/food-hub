@@ -25,7 +25,7 @@ class FilterCusineListWidget extends StatelessWidget {
                       : UIDataColors.grey200,
                   borderRadius: const BorderRadius.all(Radius.circular(20))),
               height: 30,
-              width: 70,
+              width: 90,
               child: Center(
                   child: Text(
                 _.cusineList[index].name.toString(),
