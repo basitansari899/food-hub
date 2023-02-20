@@ -13,6 +13,13 @@ part 'uidata/color.dart';
 class UIData {
   //strings
   static const String appName ="Food Hub";
+  static const String filter ="Filter";
+  static const String category ="Category";
+  static const String recipeType ="Recipie Type";
+  static const String applyFilter ="Apply Filter";
+  static const String clearFilter ="Clear Filter";
+  static const String serchHeading ="Search";
+  static const String searchHere ="Search Here";
 
 
   //gneric
