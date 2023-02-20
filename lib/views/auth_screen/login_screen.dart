@@ -72,13 +72,7 @@ class LoginScreen extends StatelessWidget {
                     SizedBox(
                       child: Padding(
                         padding: const EdgeInsets.only(top: 10.0),
-                        child: Obx(
-                          () => _.isLoading.value
-                              ? const SizedBox(
-                                  child: Center(
-                                  child: CircularProgressIndicator(),
-                                ))
-                              : RaisedGradientButton(
+                        child:  RaisedGradientButton(
                                   gradient: LinearGradient(
                                     colors: <Color>[
                                       UIDataColors.black,
@@ -88,10 +82,10 @@ class LoginScreen extends StatelessWidget {
                                   btntxt: "Login".tr,
                                   buttontxtColor: UIDataColors.white,
                                   onPressed: () {
-                                    _.loginfunction();
+                                    _.signInWithEmailAndPassword();
                                   },
                                 ),
-                        ),
+                        
                       ),
                     ),
                     SpacingHeight.heightlistspacing35,
