@@ -4,43 +4,79 @@ import 'package:food_hub/model/cusine_model.dart';
 import 'package:food_hub/model/food_model.dart';
 import 'package:food_hub/utils/ui_data.dart';
 import 'package:get/get.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 class HomeController extends GetxController {
-  List<CategoryModel> categoryList = [
-    CategoryModel(id:'cat1',name:'Breakfast',isSelected: false),
-    CategoryModel(id:'cat2',name:'Lunch',isSelected: false),
-    CategoryModel(id:'cat3',name:'Dinner',isSelected: false),
-  ];
-  List<CusineModel> cusineList = [
-    CusineModel(id:'cus1',name:'Salad',isSelected: false),
-    CusineModel(id:'cus2',name:'Egg',isSelected: false),
-    CusineModel(id:'cus3',name:'Cakes',isSelected: false),
-    CusineModel(id:'cus4',name:'Chicken',isSelected: false),
-    CusineModel(id:'cus5',name:'Meals',isSelected: false),
-    CusineModel(id:'cus6',name:'Vegitables',isSelected: false),
-  ];
-   List<FoodModel> foodList = [
-    FoodModel(id:'food1',name:'Easy Home Made Burger',catogoryId: "cat1",cusineId: "cus1",chefName: "James Spader", imageString: UIDataImage.foodone),
-    FoodModel(id:'food2',name:'Sandwich',catogoryId: "cat2",cusineId: "cus2",chefName: "Jhon", imageString: UIDataImage.food2),
-    FoodModel(id:'food3',name:'Easy Home Burger',catogoryId: "cat2",cusineId: "cus3",chefName: "Doe", imageString: UIDataImage.food3),
-    FoodModel(id:'food4',name:'Easy Made Burger',catogoryId: "cat3",cusineId: "cus4",chefName: "Lisa", imageString: UIDataImage.food44),
-    FoodModel(id:'food5',name:'Easy Home Made Beef Burger',catogoryId: "cat3",cusineId: "cus5",chefName: "Collin", imageString: UIDataImage.food66),
-    FoodModel(id:'food6',name:'Home Made Burger',catogoryId: "cat3",cusineId: "cus6",chefName: "Ferram", imageString: UIDataImage.foodone),
-    FoodModel(id:'food7',name:'Made Burger',catogoryId: "cat1",cusineId: "cus1",chefName: "Kehram", imageString: UIDataImage.food2),
-    FoodModel(id:'food8',name:'Easy Home Made Burger',catogoryId: "cat2",cusineId: "cus2",chefName: "Lonchino", imageString: UIDataImage.food3),
-    FoodModel(id:'food9',name:'Easy Burger',catogoryId: "cat3",cusineId: "cus3",chefName: "fintash", imageString: UIDataImage.food44),
-    FoodModel(id:'food10',name:'Egg fried',catogoryId: "cat2",cusineId: "cus4",chefName: "Albert", imageString: UIDataImage.food66),
-    FoodModel(id:'food11',name:'Ginger egg',catogoryId: "cat1",cusineId: "cus5",chefName: "Jasica", imageString: UIDataImage.foodone),
-  ];
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
+  List<CategoryModel> categoryList = [];
+  List<CusineModel> cusineList = [];
+  List<FoodModel> foodList = [];
 
-List<FoodModel> filteredFoodList = [];
-final TextEditingController searchController = TextEditingController();
+  List<FoodModel> filteredFoodList = [];
+  final TextEditingController searchController = TextEditingController();
 
 @override
   void onInit() {
-    setfoodList();
+    // setfoodList();
+    getFoodList();
+    getCategoryList();
+    getCusineList();
     super.onInit();
   }
 
+
+
+     
+     
+  Future getFoodList() async {
+    final productList = firestore.collection("food_list");
+    try {
+      await productList.get().then((querySnapshot) {
+        for (var element in querySnapshot.docs) {
+          final todoModel =
+              FoodModel.fromDocumentSnapshot(documentSnapshot: element);
+          foodList.add(todoModel);
+        }
+      });
+      filteredFoodList = foodList;
+      update();
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
+
+  Future getCategoryList() async {
+    final categoryColl = firestore.collection("categories");
+    try {
+      await categoryColl.get().then((querySnapshot) {
+        for (var element in querySnapshot.docs) {
+          final category =
+              CategoryModel.fromDocumentSnapshot(documentSnapshot: element);
+          categoryList.add(category);
+        }
+      });
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
+
+  Future getCusineList() async {
+    final cusineColl = firestore.collection("cusine_type");
+    try {
+      await cusineColl.get().then((querySnapshot) {
+        for (var element in querySnapshot.docs) {
+          final cusine =
+              CusineModel.fromDocumentSnapshot(documentSnapshot: element);
+          cusineList.add(cusine);
+        }
+      });
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
+  
   setfoodList() {
     filteredFoodList = foodList;
     update();

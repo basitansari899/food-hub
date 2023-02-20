@@ -4,6 +4,7 @@ class UIDataImage {
   // <---------------------- Define Image Name Here ------------------------>
 
   static const String imageDir = "assets/images";
+  static const String imageDirOne = "assets/images/";
   static const String splash = "$imageDir/splash_screen.png";
   static const String foodone  = "$imageDir/f1.jpg";
   static const String food2  = "$imageDir/f2.jpg";

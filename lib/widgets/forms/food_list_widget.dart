@@ -39,7 +39,7 @@ class FoodList extends StatelessWidget {
                     decoration: BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage(
-                              filteredFoodList[index].imageString.toString()),
+                             UIDataImage.imageDirOne + filteredFoodList[index].imageString.toString()),
                           fit: BoxFit.fill,
                         ),
                         borderRadius:
@@ -64,9 +64,8 @@ class FoodList extends StatelessWidget {
                               width: 20,
                               decoration: BoxDecoration(
                                 image: DecorationImage(
-                                  image: AssetImage(filteredFoodList[index]
-                                      .imageString
-                                      .toString()),
+                                  image: AssetImage(
+                             UIDataImage.imageDirOne + filteredFoodList[index].imageString.toString()),
                                   fit: BoxFit.fill,
                                 ),
                                 borderRadius: const BorderRadius.all(
